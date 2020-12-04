@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 
 app = Flask(__name__)
 
@@ -14,4 +14,5 @@ def chat():
 
 @app.route("/api/update", methods=["POST"])
 def update():
-    return jsonify({"name": "Alex"})
+    data = request.args.get("name")
+    return jsonify({"name": data})
